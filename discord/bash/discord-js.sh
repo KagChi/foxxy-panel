@@ -1,5 +1,7 @@
-if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == "1" ]]; 
-then git pull; fi; 
+if [[ ! -z ${INSTALL_REPO} ]]; 
+then git clone {{INSTALL_REPO}} .; fi; 
+if [[ ! -z ${AUTO_UPDATE} ]];
+then git pull; fi;
 if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; 
 if [[ ! -z ${UNINSTALL_PACKAGES} ]]; then
 /usr/local/bin/npm uninstall ${UNINSTALL_PACKAGES}; fi;
